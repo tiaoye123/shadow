@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://drq4yoo81orhp"]
+
+[ext_resource type="Script" uid="uid://bj58s8igqcof3" path="res://script/火光.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://1nefrf4dklsj" path="res://scenes/Player.tscn" id="1_o5qli"]
+
+[sub_resource type="Gradient" id="Gradient_0wfyh"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.3515629, 0.3515629, 0.35156286, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sugp2"]
+gradient = SubResource("Gradient_0wfyh")
+
+[sub_resource type="Gradient" id="Gradient_o5qli"]
+offsets = PackedFloat32Array(0.99170125)
+colors = PackedColorArray(0.37017524, 0.37742916, 0.3615373, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wvhbo"]
+gradient = SubResource("Gradient_o5qli")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvhbo"]
+size = Vector2(148, 10)
+
+[sub_resource type="Gradient" id="Gradient_sugp2"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.91266376)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wvhbo"]
+gradient = SubResource("Gradient_sugp2")
+width = 248
+height = 248
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.85, 0.15)
+
+[sub_resource type="Gradient" id="Gradient_0rwas"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o5qli"]
+gradient = SubResource("Gradient_0rwas")
+width = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wvhbo"]
+radius = 5.0
+
+[node name="Main" type="Node" unique_id=8652992]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=639117662]
+position = Vector2(188, 139)
+scale = Vector2(11.96875, 5.71875)
+texture = SubResource("GradientTexture2D_sugp2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1922555692]
+position = Vector2(142, 188)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1080294633]
+scale = Vector2(0.57812506, 10)
+texture = SubResource("GradientTexture1D_wvhbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1625111214]
+shape = SubResource("RectangleShape2D_wvhbo")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1646905645]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=431877436 node_paths=PackedStringArray("follow_one")]
+position = Vector2(126, 61)
+color = Color(1.353256, 1.353256, 1.353256, 1)
+energy = 1.5
+blend_mode = 2
+texture = SubResource("GradientTexture2D_wvhbo")
+texture_scale = 0.7
+script = ExtResource("1_0wfyh")
+pos_amount = 3.0
+follow_one = NodePath("../Player")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=637343858 node_paths=PackedStringArray("follow_one")]
+position = Vector2(296, 78)
+color = Color(1.353256, 1.353256, 1.353256, 1)
+energy = 1.5
+blend_mode = 2
+texture = SubResource("GradientTexture2D_wvhbo")
+texture_scale = 0.7
+script = ExtResource("1_0wfyh")
+pos_amount = 3.0
+follow_one = NodePath("../item")
+
+[node name="Player" parent="." unique_id=102352861 instance=ExtResource("1_o5qli")]
+position = Vector2(88, 176)
+max_speed = 85.0
+
+[node name="item" type="Node2D" parent="." unique_id=1835377577]
+position = Vector2(180, 112)
+
+[node name="Sprite2D" type="Sprite2D" parent="item" unique_id=372295847]
+scale = Vector2(1.9999999, 3.9999998)
+texture = SubResource("GradientTexture1D_o5qli")
+
+[node name="Area2D" type="Area2D" parent="item" unique_id=738979842]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="item/Area2D" unique_id=577636474]
+shape = SubResource("CircleShape2D_wvhbo")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=104126071]
+color = Color(0, 0, 0, 1)
+
+[connection signal="body_entered" from="item/Area2D" to="item" method="_on_area_2d_body_entered"]

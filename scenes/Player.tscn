@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://1nefrf4dklsj"]
+
+[ext_resource type="Script" uid="uid://b2ra62b8vic5f" path="res://script/player.gd" id="1_p0vlq"]
+
+[sub_resource type="Gradient" id="Gradient_p0vlq"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xhfnw"]
+gradient = SubResource("Gradient_p0vlq")
+width = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q5h1"]
+size = Vector2(10, 10)
+
+[node name="Player" type="CharacterBody2D" unique_id=389442010 groups=["player"]]
+script = ExtResource("1_p0vlq")
+speed_a = 1200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=315169144]
+scale = Vector2(5, 10)
+texture = SubResource("GradientTexture1D_xhfnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=583379084]
+shape = SubResource("RectangleShape2D_5q5h1")
+
+[node name="speed" type="Label" parent="." unique_id=1179462973]
+offset_left = 1.0
+offset_top = -15.0
+offset_right = 11.0
+offset_bottom = -3.0
+theme_override_font_sizes/font_size = 8
+text = "67"
