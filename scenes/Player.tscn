@@ -10,17 +10,20 @@ gradient = SubResource("Gradient_p0vlq")
 width = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5q5h1"]
-size = Vector2(10, 10)
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fu0kv"]
+size = Vector2(14, 14)
 
 [node name="Player" type="CharacterBody2D" unique_id=389442010 groups=["player"]]
 script = ExtResource("1_p0vlq")
 speed_a = 1200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=315169144]
-scale = Vector2(5, 10)
+scale = Vector2(3.9999998, 7.9999995)
 texture = SubResource("GradientTexture1D_xhfnw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=583379084]
+[node name="玩家碰撞体积" type="CollisionShape2D" parent="." unique_id=583379084]
 shape = SubResource("RectangleShape2D_5q5h1")
 
 [node name="speed" type="Label" parent="." unique_id=1179462973]
@@ -30,3 +33,13 @@ offset_right = 11.0
 offset_bottom = -3.0
 theme_override_font_sizes/font_size = 8
 text = "67"
+
+[node name="拾取范围" type="Area2D" parent="." unique_id=1088140477]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="拾取范围" unique_id=1958437690]
+shape = SubResource("RectangleShape2D_fu0kv")
+
+[connection signal="body_entered" from="拾取范围" to="." method="_on_拾取范围_body_entered"]
+[connection signal="body_exited" from="拾取范围" to="." method="_on_拾取范围_body_exited"]

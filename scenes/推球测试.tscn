@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bami42ji74lfh"]
+
+[ext_resource type="PackedScene" uid="uid://ba3mhywajgb0d" path="res://scenes/stone.tscn" id="1_w82n8"]
+[ext_resource type="PackedScene" uid="uid://1nefrf4dklsj" path="res://scenes/Player.tscn" id="2_fu0kv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifow5"]
+size = Vector2(166, 8)
+
+[node name="推球测试" type="Node" unique_id=1773722584]
+
+[node name="Player" parent="." unique_id=389442010 instance=ExtResource("2_fu0kv")]
+position = Vector2(140, 60)
+
+[node name="ground" type="Node2D" parent="." unique_id=1751661882]
+position = Vector2(-86, -47)
+
+[node name="Polygon2D" type="Polygon2D" parent="ground" unique_id=1027455991]
+polygon = PackedVector2Array(153, 128, 153, 136, 319, 136, 319, 128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground/Polygon2D" unique_id=1522789791]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/Polygon2D/StaticBody2D" unique_id=1623028494]
+position = Vector2(236, 132)
+shape = SubResource("RectangleShape2D_ifow5")
+
+[node name="ground2" type="Node2D" parent="." unique_id=1167674136]
+position = Vector2(452, 31)
+scale = Vector2(-1, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="ground2" unique_id=1943165179]
+position = Vector2(-3, 4)
+color = Color(0.5890956, 0.58909565, 0.58909535, 1)
+polygon = PackedVector2Array(104, 73, 104, 155, 302, 155)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground2/Polygon2D" unique_id=1149469932]
+position = Vector2(-14, 11)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ground2/Polygon2D/StaticBody2D" unique_id=1681832106]
+position = Vector2(14, -11)
+polygon = PackedVector2Array(104, 73, 302, 155, 104, 155)
+
+[node name="stone" parent="." unique_id=659653322 instance=ExtResource("1_w82n8")]
+position = Vector2(156, 65)
