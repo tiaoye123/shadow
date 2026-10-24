@@ -9,22 +9,20 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_p0vlq")
 width = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q5h1"]
-size = Vector2(8, 8)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu0kv"]
 size = Vector2(14, 14)
 
 [node name="Player" type="CharacterBody2D" unique_id=389442010 groups=["player"]]
 script = ExtResource("1_p0vlq")
 speed_a = 1200.0
+"扔球speed" = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=315169144]
 scale = Vector2(3.9999998, 7.9999995)
 texture = SubResource("GradientTexture1D_xhfnw")
 
-[node name="玩家碰撞体积" type="CollisionShape2D" parent="." unique_id=583379084]
-shape = SubResource("RectangleShape2D_5q5h1")
+[node name="玩家碰撞体积" type="CollisionPolygon2D" parent="." unique_id=1301840560]
+polygon = PackedVector2Array(0, -4, -4, -3, -4, 4, 4, 4, 4, -3)
 
 [node name="speed" type="Label" parent="." unique_id=1179462973]
 offset_left = 1.0
@@ -40,6 +38,16 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="拾取范围" unique_id=1958437690]
 shape = SubResource("RectangleShape2D_fu0kv")
+
+[node name="扔球箭头_line" type="Line2D" parent="." unique_id=328504563]
+top_level = true
+points = PackedVector2Array(-4, -22, 41, -14)
+width = 1.0
+
+[node name="扔球箭头_头" type="Polygon2D" parent="." unique_id=1985275669]
+top_level = true
+scale = Vector2(3, 2)
+polygon = PackedVector2Array(0, -1, 0, 1, 1, 0)
 
 [connection signal="body_entered" from="拾取范围" to="." method="_on_拾取范围_body_entered"]
 [connection signal="body_exited" from="拾取范围" to="." method="_on_拾取范围_body_exited"]

@@ -15,8 +15,19 @@ var player_face : float
 var item_can_pick_up : Array[Node2D]
 var item_in_hand : RigidBody2D
 
+#扔球相关
+@onready var 扔球箭头_line: Line2D = $扔球箭头_line
+@onready var 扔球箭头_头: Polygon2D = $扔球箭头_头
+var 箭头goal_position : Vector2
+@export var 箭头R : float = 18
+@export var 扔球speed : float = 100
+
+
 
 func _physics_process(delta: float) -> void:
+	
+	#鼠标和玩家位置的方向向量
+	var dir := (get_global_mouse_position() - global_position).normalized()
 	
 	#下落
 	if not is_on_floor():
@@ -46,12 +57,29 @@ func _physics_process(delta: float) -> void:
 	if item_in_hand:
 		item_in_hand.global_position = global_position
 		if Input.is_action_just_pressed("扔"):
-			var item = item_in_hand
-			item_in_hand = null
-			item.set_deferred("freeze" , false)
-			item.set_deferred("sleeping" , false)
+			扔球(dir)
+		if Input.is_action_just_pressed("light"):
+			$"../火光2".visible = true
+
 	
-	
+	#扔球箭头相关
+	箭头goal_position = global_position + dir * 箭头R
+	#扔球箭头控制
+	if item_in_hand:
+		扔球箭头_头.visible = true
+		扔球箭头_line.set_point_position(0 , global_position)
+		扔球箭头_line.set_point_position(1 , 箭头goal_position)
+		扔球箭头_头.global_position = 箭头goal_position
+		扔球箭头_头.rotation = dir.angle()
+
+
+func 扔球(dir : Vector2) -> void:
+	var item = item_in_hand
+	item_in_hand = null
+	item.被扔(dir , 扔球speed , global_position)
+	扔球箭头_line.set_point_position(0 , Vector2.ZERO)
+	扔球箭头_line.set_point_position(1 , Vector2.ZERO)
+	扔球箭头_头.visible = false
 
 
 #debug用label
@@ -63,7 +91,10 @@ func debug_label() -> void:
 func pick_up() -> void:
 	if not item_in_hand:
 		item_in_hand = item_can_pick_up[0]
+		item_in_hand.set_collision_layer_value(1 , false)
+		item_in_hand.set_collision_mask_value(1 , false)
 		item_in_hand.freeze = true
+		item_in_hand.sleeping = true
 
 
 #将进入拾取范围的可拾取物品依次加入数组

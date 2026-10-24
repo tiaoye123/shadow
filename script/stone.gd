@@ -18,3 +18,16 @@ func _process(delta: float) -> void:
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO , radius , Color.GRAY)
+
+
+#球被扔出
+func 被扔(dir : Vector2 , speed : float , start_position : Vector2) -> void:
+	var rid := get_rid()
+	PhysicsServer2D.body_set_state(rid, PhysicsServer2D.BODY_STATE_TRANSFORM,
+		Transform2D(global_rotation, start_position))
+	PhysicsServer2D.body_set_state(rid, PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY, dir * speed)
+	freeze = false
+	sleeping = false
+	await get_tree().create_timer(0.2).timeout
+	set_collision_layer_value(1 , true)
+	set_collision_mask_value(1 , true)

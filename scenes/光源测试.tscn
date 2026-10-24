@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://drq4yoo81orhp"]
 
+[ext_resource type="PackedScene" uid="uid://ba7wmhgirsrr6" path="res://scenes/火光.tscn" id="1_ffmsq"]
 [ext_resource type="Script" uid="uid://bj58s8igqcof3" path="res://script/火光.gd" id="1_t2l8l"]
 [ext_resource type="PackedScene" uid="uid://1nefrf4dklsj" path="res://scenes/Player.tscn" id="2_ffmsq"]
 
@@ -66,14 +67,8 @@ shape = SubResource("RectangleShape2D_wvhbo")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1646905645]
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=431877436 node_paths=PackedStringArray("follow_one")]
+[node name="火光" parent="." unique_id=989736161 node_paths=PackedStringArray("follow_one") instance=ExtResource("1_ffmsq")]
 position = Vector2(126, 136)
-color = Color(1.353256, 1.353256, 1.353256, 1)
-texture = SubResource("GradientTexture2D_wvhbo")
-texture_scale = 0.7
-script = ExtResource("1_t2l8l")
-flicker_amount = 0.25
-pos_amount = 2.5
 follow_one = NodePath("../Player")
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1878289662 node_paths=PackedStringArray("follow_one")]
