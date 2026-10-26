@@ -30,7 +30,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	base_position = follow_one.position
+	if follow_one:
+		base_position = follow_one.position
 	
 	#噪声计时器计时
 	t += delta

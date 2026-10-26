@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ba3mhywajgb0d" path="res://scenes/stone.tscn" id="1_w82n8"]
 [ext_resource type="PackedScene" uid="uid://1nefrf4dklsj" path="res://scenes/Player.tscn" id="2_fu0kv"]
+[ext_resource type="PackedScene" uid="uid://ba7wmhgirsrr6" path="res://scenes/火光.tscn" id="3_tiylb"]
 
 [sub_resource type="Gradient" id="Gradient_0wfyh"]
 offsets = PackedFloat32Array(1)
@@ -10,8 +11,24 @@ colors = PackedColorArray(0.3515629, 0.3515629, 0.35156286, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_djd6u"]
 gradient = SubResource("Gradient_0wfyh")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fu0kv"]
+friction = 0.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifow5"]
 size = Vector2(166, 8)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tiylb"]
+friction = 0.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_djd6u"]
+friction = 0.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a2kau"]
+friction = 0.0
+
+[sub_resource type="Environment" id="Environment_tiylb"]
+glow_enabled = true
+glow_hdr_threshold = 0.9
 
 [node name="推球测试" type="Node" unique_id=1773722584]
 
@@ -21,11 +38,11 @@ scale = Vector2(11.96875, 5.71875)
 texture = SubResource("GradientTexture2D_djd6u")
 
 [node name="Player" parent="." unique_id=389442010 instance=ExtResource("2_fu0kv")]
-position = Vector2(140, 60)
+position = Vector2(22, 57)
 "扔球speed" = 250.0
 
 [node name="ground" type="Node2D" parent="." unique_id=1751661882]
-position = Vector2(-86, -47)
+position = Vector2(-145, -53)
 
 [node name="Polygon2D" type="Polygon2D" parent="ground" unique_id=1027455991]
 polygon = PackedVector2Array(153, 128, 153, 136, 319, 136, 319, 128)
@@ -33,28 +50,119 @@ polygon = PackedVector2Array(153, 128, 153, 136, 319, 136, 319, 128)
 [node name="StaticBody2D" type="StaticBody2D" parent="ground/Polygon2D" unique_id=1522789791]
 collision_layer = 3
 collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_fu0kv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground/Polygon2D/StaticBody2D" unique_id=1623028494]
 position = Vector2(236, 132)
 shape = SubResource("RectangleShape2D_ifow5")
 
-[node name="ground2" type="Node2D" parent="." unique_id=1167674136]
-position = Vector2(429, 2)
-scale = Vector2(-1, 1)
+[node name="ground4" type="Node2D" parent="." unique_id=1174514417]
+position = Vector2(46, -69)
 
-[node name="Polygon2D" type="Polygon2D" parent="ground2" unique_id=1943165179]
-position = Vector2(-3, 4)
-color = Color(0.5890956, 0.58909565, 0.58909535, 1)
-polygon = PackedVector2Array(104, 73, 104, 155, 302, 155)
+[node name="Polygon2D" type="Polygon2D" parent="ground4" unique_id=2036407770]
+polygon = PackedVector2Array(153, 128, 153, 136, 319, 136, 319, 128)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ground2/Polygon2D" unique_id=1149469932]
-position = Vector2(-14, 11)
+[node name="StaticBody2D" type="StaticBody2D" parent="ground4/Polygon2D" unique_id=1803698193]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_tiylb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground4/Polygon2D/StaticBody2D" unique_id=1251155492]
+position = Vector2(236, 132)
+shape = SubResource("RectangleShape2D_ifow5")
+
+[node name="ground5" type="Node2D" parent="." unique_id=1430035223]
+position = Vector2(-70, -11)
+
+[node name="Polygon2D" type="Polygon2D" parent="ground5" unique_id=1123245047]
+polygon = PackedVector2Array(153, 128, 153, 136, 319, 136, 319, 128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground5/Polygon2D" unique_id=1882690664]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_djd6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground5/Polygon2D/StaticBody2D" unique_id=1987651095]
+position = Vector2(236, 132)
+shape = SubResource("RectangleShape2D_ifow5")
+
+[node name="ground2" type="Node2D" parent="." unique_id=1215843050]
+position = Vector2(61.000008, 24.999998)
+rotation = -0.23078373
+
+[node name="Polygon2D" type="Polygon2D" parent="ground2" unique_id=987795989]
+polygon = PackedVector2Array(153, 128, 153, 136, 319, 136, 319, 128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground2/Polygon2D" unique_id=230702364]
+position = Vector2(-7.389226e-06, -2.125204e-06)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_a2kau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground2/Polygon2D/StaticBody2D" unique_id=1079868994]
+position = Vector2(236, 132)
+shape = SubResource("RectangleShape2D_ifow5")
+
+[node name="ground6" type="Node2D" parent="." unique_id=2102766967]
+position = Vector2(-141, -13.999996)
+rotation = -0.23078373
+
+[node name="Polygon2D" type="Polygon2D" parent="ground6" unique_id=81500564]
+polygon = PackedVector2Array(153, 128, 153, 136, 319, 136, 319, 128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground6/Polygon2D" unique_id=1332605583]
+position = Vector2(-7.389226e-06, -2.125204e-06)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_a2kau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground6/Polygon2D/StaticBody2D" unique_id=2056559010]
+position = Vector2(236, 132)
+shape = SubResource("RectangleShape2D_ifow5")
+
+[node name="ground3" type="Node2D" parent="." unique_id=276150720]
+position = Vector2(90.99999, -178)
+rotation = 0.44501966
+
+[node name="Polygon2D" type="Polygon2D" parent="ground3" unique_id=1430904382]
+polygon = PackedVector2Array(153, 128, 153, 136, 319, 136, 319, 128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground3/Polygon2D" unique_id=1865030814]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ground2/Polygon2D/StaticBody2D" unique_id=1681832106]
-position = Vector2(14, -11)
-polygon = PackedVector2Array(104, 73, 302, 155, 104, 155)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground3/Polygon2D/StaticBody2D" unique_id=246894852]
+position = Vector2(236, 132)
+shape = SubResource("RectangleShape2D_ifow5")
 
-[node name="stone" parent="." unique_id=659653322 instance=ExtResource("1_w82n8")]
-position = Vector2(156, 65)
+[node name="stone" parent="." unique_id=659653322 node_paths=PackedStringArray("light") instance=ExtResource("1_w82n8")]
+position = Vector2(57, 44)
+light = NodePath("../光源组/火光")
+
+[node name="stone2" parent="." unique_id=1441931086 node_paths=PackedStringArray("light") instance=ExtResource("1_w82n8")]
+position = Vector2(361, 55)
+light = NodePath("../光源组/火光2")
+
+[node name="光源组" type="Node" parent="." unique_id=1121738700]
+
+[node name="火光" parent="光源组" unique_id=989736161 node_paths=PackedStringArray("follow_one") instance=ExtResource("3_tiylb")]
+visible = false
+texture_scale = 0.5
+follow_one = NodePath("../../stone")
+
+[node name="火光2" parent="光源组" unique_id=132382489 node_paths=PackedStringArray("follow_one") instance=ExtResource("3_tiylb")]
+visible = false
+texture_scale = 0.5
+follow_one = NodePath("../../stone2")
+
+[node name="火光3" parent="光源组" unique_id=1485526127 node_paths=PackedStringArray("follow_one") instance=ExtResource("3_tiylb")]
+texture_scale = 0.4
+base_energy = 0.4
+follow_one = NodePath("../../Player")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=669351506]
+visible = false
+color = Color(0.00566115, 0.005661152, 0.005661148, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=291767352]
+environment = SubResource("Environment_tiylb")

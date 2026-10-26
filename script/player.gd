@@ -9,7 +9,6 @@ var move_speed : float
 var speed_tween : Tween
 @export var G : float = 400
 var player_face : float
-@onready var speed: Label = $speed
 
 #拾取检测和手持物品
 var item_can_pick_up : Array[Node2D]
@@ -32,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	#下落
 	if not is_on_floor():
 		velocity.y += G * delta
-		velocity.y = clamp(velocity.y , 0 , 300)
+		velocity.y = clamp(velocity.y , -200 , 300)
 	
 	#移动速度计算
 	player_face = Input.get_axis("left" , "right")
@@ -46,6 +45,8 @@ func _physics_process(delta: float) -> void:
 			speed_tween = create_tween()
 			speed_tween.tween_property(self , "move_speed" , 0 , 0.05 )
 	velocity.x = move_speed
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		velocity.y = -130
 	move_and_slide()
 	debug_label()
 	
@@ -53,13 +54,13 @@ func _physics_process(delta: float) -> void:
 	if not item_can_pick_up.is_empty() and Input.is_action_just_pressed("pick"):
 		pick_up()
 	
-	#扔他妈的球
+	#扔他妈的球 and 点他妈的燃
 	if item_in_hand:
 		item_in_hand.global_position = global_position
 		if Input.is_action_just_pressed("扔"):
 			扔球(dir)
 		if Input.is_action_just_pressed("light"):
-			$"../火光2".visible = true
+			item_in_hand.set_state(item_in_hand.State.IS_FIRE)
 
 	
 	#扔球箭头相关
@@ -84,7 +85,7 @@ func 扔球(dir : Vector2) -> void:
 
 #debug用label
 func debug_label() -> void:
-	speed.text =  "speed:" + str(move_speed)
+	pass
 
 
 #拾取身边可拾取item

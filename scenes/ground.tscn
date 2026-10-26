@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://du1prpvc213ui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvhbo"]
+size = Vector2(81, 16)
+
+[node name="ground" type="Polygon2D" unique_id=1877104585]
+polygon = PackedVector2Array(-38, -8, -38, 8, 43, 8, 43, -8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1090688382]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1056404845]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_wvhbo")
