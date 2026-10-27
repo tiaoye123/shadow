@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://6v6dcsqw1cns" path="res://script/stone.gd" id="1_hmdus"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hmdus"]
-friction = 0.03
+friction = 0.01
 bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2l8l"]
