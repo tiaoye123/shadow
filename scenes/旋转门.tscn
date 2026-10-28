@@ -6,11 +6,13 @@
 size = Vector2(2, 14)
 
 [sub_resource type="Gradient" id="Gradient_uuw8n"]
-offsets = PackedFloat32Array(0, 0.5676856, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.12900001, 1, 1, 1, 0)
+colors = PackedColorArray(1, 1, 1, 0.6666667, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ifow5"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uuw8n"]
 gradient = SubResource("Gradient_uuw8n")
+fill = 2
+fill_from = Vector2(0.4871795, 0.4957265)
+fill_to = Vector2(0.93162394, 0.10683761)
 
 [node name="旋转门" type="Node2D" unique_id=179682687]
 script = ExtResource("1_uuw8n")
@@ -29,8 +31,15 @@ position = Vector2(-2, 7)
 shape = SubResource("RectangleShape2D_ifow5")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1994311170]
-position = Vector2(0, 8)
-scale = Vector2(0.15625, 0.18750001)
+position = Vector2(-1.7881393e-07, 8)
+scale = Vector2(0.23437497, 0.33203122)
 color = Color(1.353256, 1.353256, 1.353256, 1)
 energy = 0.2
-texture = SubResource("GradientTexture2D_ifow5")
+texture = SubResource("GradientTexture2D_uuw8n")
+texture_scale = 0.8
+
+[node name="按钮相连激光" type="Line2D" parent="." unique_id=218053324]
+self_modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
+top_level = true
+points = PackedVector2Array(-18, -9, 23, -9)
+width = 0.2
