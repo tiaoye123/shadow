@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://by2w0twsjnd07"]
+
+[ext_resource type="Script" uid="uid://c1wwi7h26g18e" path="res://script/移动平台.gd" id="1_eonyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvhbo"]
+size = Vector2(19.012482, 4.216263)
+
+[node name="Node2D" type="AnimatableBody2D" unique_id=501916204]
+script = ExtResource("1_eonyh")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1071187919]
+modulate = Color(3.657937e-06, 0.8511, 0.8540898, 1)
+polygon = PackedVector2Array(-9.5, -2.1015625, -9.509022, 2.113996, 9.493767, 2.113996, 9.493768, -2.0934985)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=994571250]
+shape = SubResource("RectangleShape2D_wvhbo")
+debug_color = Color(0, 0.6, 0.7019608, 0.41960785)

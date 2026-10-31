@@ -4,6 +4,7 @@
 size = Vector2(81, 16)
 
 [node name="ground" type="Polygon2D" unique_id=1877104585]
+modulate = Color(0.51718444, 0.5171845, 0.51718444, 1)
 polygon = PackedVector2Array(-38, -8, -38, 8, 43, 8, 43, -8)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1090688382]
