@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvhbo"]
 size = Vector2(19.012482, 4.216263)
 
-[node name="Node2D" type="AnimatableBody2D" unique_id=501916204]
+[node name="移动平台" type="AnimatableBody2D" unique_id=501916204]
 script = ExtResource("1_eonyh")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1071187919]

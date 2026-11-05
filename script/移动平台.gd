@@ -1,11 +1,15 @@
 extends AnimatableBody2D
 
 
-# Called when the node enters the scene tree for the first time.
+@export var 移动动画 : AnimationPlayer
+@export var 引信 : Node2D
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	if 引信:
+		引信.open_door.connect(start_move)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func start_move() -> void:
+	if 移动动画:
+		移动动画.play("移动")

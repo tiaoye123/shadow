@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dghmhm7q0u0g7"]
+
+[ext_resource type="Script" uid="uid://cmc875garswon" path="res://script/node_2d.gd" id="1_8cgsr"]
+[ext_resource type="PackedScene" uid="uid://ya50ogua5afk" path="res://scenes/绳子.tscn" id="1_q12ni"]
+[ext_resource type="PackedScene" uid="uid://du1prpvc213ui" path="res://scenes/ground.tscn" id="3_ywd46"]
+[ext_resource type="Texture2D" uid="uid://cw1o1q4nmh7ac" path="res://icon.svg" id="4_dyg21"]
+
+[node name="Node" type="Node" unique_id=903710019]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1132827883]
+position = Vector2(120.80622, 26.672638)
+script = ExtResource("1_8cgsr")
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=1950327603]
+position = Vector2(168.06001, 84.22743)
+
+[node name="绳子" parent="." unique_id=875457264 node_paths=PackedStringArray("anchor", "end_body", "fire") instance=ExtResource("1_q12ni")]
+points = PackedVector2Array(726.2548, 5.0384064, 820.6179, -81.244026)
+width = 1.0
+segment_count = 12
+interations = 20
+anchor = NodePath("../Node2D")
+end_body = NodePath("../Node2D2")
+fire = NodePath("../Sprite2D")
+
+[node name="ground" parent="." unique_id=1877104585 instance=ExtResource("3_ywd46")]
+position = Vector2(160.19771, 98.72647)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1255456557]
+position = Vector2(-0.637268, 0)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_dyg21")

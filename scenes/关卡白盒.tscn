@@ -8,12 +8,52 @@
 [ext_resource type="PackedScene" uid="uid://dha4o41syfcyg" path="res://scenes/旋转门.tscn" id="5_2txsg"]
 [ext_resource type="PackedScene" uid="uid://opbnir8febq4" path="res://scenes/按钮.tscn" id="6_1wdii"]
 [ext_resource type="PackedScene" uid="uid://by2w0twsjnd07" path="res://scenes/移动平台.tscn" id="8_netke"]
+[ext_resource type="PackedScene" uid="uid://ya50ogua5afk" path="res://scenes/绳子.tscn" id="9_kp3co"]
 
 [sub_resource type="Environment" id="Environment_wvhbo"]
 background_mode = 3
 glow_enabled = true
 glow_hdr_threshold = 0.7
 glow_hdr_scale = 1.0
+
+[sub_resource type="Animation" id="Animation_netke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(254.26048, 140.98305)]
+}
+
+[sub_resource type="Animation" id="Animation_kp3co"]
+resource_name = "移动"
+length = 2.5000000000000004
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 2.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(254.26048, 140.98305), Vector2(254.26, 62)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjoov"]
+_data = {
+&"RESET": SubResource("Animation_netke"),
+&"移动": SubResource("Animation_kp3co")
+}
 
 [node name="关卡白盒" type="Node" unique_id=1724823283]
 script = ExtResource("1_2txsg")
@@ -28,7 +68,7 @@ texture_scale = 0.55
 follow_one = NodePath("../可交互物品/石头/stone")
 
 [node name="背景" type="Polygon2D" parent="." unique_id=1196559667]
-position = Vector2(49.040825, 21.122803)
+position = Vector2(44, 25)
 color = Color(0.24477637, 0.2447764, 0.24477637, 1)
 polygon = PackedVector2Array(-33, -16, 446, -13, 423, 262, -64, 258, -196.73035, -5.0677643)
 uv = PackedVector2Array(-33, -16, 446, -13, 423, 262, -64, 258, -196.73035, -5.0677643)
@@ -57,9 +97,26 @@ scale = Vector2(0.093929574, 2.1415536)
 polygon = PackedVector2Array(-38, -8, -38, 8, 43, 8, 43.000015, -0.044906616, 43, -8)
 
 [node name="ground44" parent="平台组" unique_id=586950385 instance=ExtResource("2_dknf8")]
-position = Vector2(203.13678, 109.196)
+position = Vector2(212.29008, 109.196)
 rotation = 1.5707964
-scale = Vector2(0.093929574, 2.9013546)
+scale = Vector2(0.093929574, 4.0021796)
+polygon = PackedVector2Array(-38, -8, -38, 8, 43, 8, 43.000015, -0.044906616, 43, -8)
+
+[node name="ground53" parent="平台组" unique_id=1936612293 instance=ExtResource("2_dknf8")]
+position = Vector2(292.91956, 80.95372)
+rotation = 1.5707964
+scale = Vector2(0.093929574, 3.5762303)
+polygon = PackedVector2Array(-38, -8, -38, 8, 43, 8, 43.000015, -0.044906616, 43, -8)
+
+[node name="ground56" parent="平台组" unique_id=507003440 instance=ExtResource("2_dknf8")]
+position = Vector2(317.3872, 69.48175)
+scale = Vector2(0.093929574, 1.9010063)
+polygon = PackedVector2Array(-38, -8, -38, 8, 43, 8, 43.000015, -0.044906616, 43, -8)
+
+[node name="ground54" parent="平台组" unique_id=1151827531 instance=ExtResource("2_dknf8")]
+position = Vector2(219.21594, 80.95372)
+rotation = 1.5707964
+scale = Vector2(0.093929574, 3.0462496)
 polygon = PackedVector2Array(-38, -8, -38, 8, 43, 8, 43.000015, -0.044906616, 43, -8)
 
 [node name="ground11" parent="平台组" unique_id=1647528695 instance=ExtResource("2_dknf8")]
@@ -95,9 +152,24 @@ rotation = 1.5707964
 scale = Vector2(0.398511, 0.51279026)
 
 [node name="ground30" parent="平台组" unique_id=166236188 instance=ExtResource("2_dknf8")]
-position = Vector2(197.60936, 35.56292)
+position = Vector2(197.60936, 32.782955)
 rotation = 1.5707964
-scale = Vector2(1.2817457, 0.35877362)
+scale = Vector2(1.2085888, 0.35877362)
+
+[node name="ground37" parent="平台组" unique_id=1980305145 instance=ExtResource("2_dknf8")]
+position = Vector2(240.72176, 66.190155)
+rotation = 1.5707964
+scale = Vector2(0.2811785, 0.35877362)
+
+[node name="ground39" parent="平台组" unique_id=1695653517 instance=ExtResource("2_dknf8")]
+position = Vector2(240.72176, 44.179714)
+rotation = 1.5707964
+scale = Vector2(0.13395572, 0.35877362)
+
+[node name="ground40" parent="平台组" unique_id=995859023 instance=ExtResource("2_dknf8")]
+position = Vector2(283.05618, 29.397955)
+rotation = 3.1415927
+scale = Vector2(1.0500851, 0.35877362)
 
 [node name="ground5" parent="平台组" unique_id=1007552391 instance=ExtResource("2_dknf8")]
 position = Vector2(9, 24.999998)
@@ -122,9 +194,9 @@ scale = Vector2(0.5868403, 0.31477106)
 polygon = PackedVector2Array(-38, -8, -38.00003, 0.3765869, -38, 8, 43, 8, 43, -8)
 
 [node name="ground18" parent="平台组" unique_id=5681803 instance=ExtResource("2_dknf8")]
-position = Vector2(74.99999, 134)
+position = Vector2(75.20779, 134)
 rotation = 3.1415927
-scale = Vector2(0.153, 0.3)
+scale = Vector2(0.15783237, 0.3)
 
 [node name="ground20" parent="平台组" unique_id=557072599 instance=ExtResource("2_dknf8")]
 position = Vector2(83.99999, 135.74371)
@@ -176,6 +248,11 @@ position = Vector2(181.27248, 90.78232)
 rotation = 4.712389
 scale = Vector2(0.41553193, 0.16233276)
 
+[node name="ground55" parent="平台组" unique_id=508596734 instance=ExtResource("2_dknf8")]
+position = Vector2(181.27248, 108.06531)
+rotation = 4.712389
+scale = Vector2(0.4593859, 0.16233276)
+
 [node name="ground33" parent="平台组" unique_id=2124762435 instance=ExtResource("2_dknf8")]
 position = Vector2(117.663635, 89.19507)
 rotation = 2.8797934
@@ -222,9 +299,22 @@ position = Vector2(239.63902, 148.1576)
 rotation = 1.5707964
 scale = Vector2(0.024334868, 0.34633416)
 
+[node name="ground50" parent="平台组" unique_id=1168466741 instance=ExtResource("2_dknf8")]
+position = Vector2(254.50642, 148.1576)
+rotation = 1.5707964
+scale = Vector2(0.024334868, 1.2960448)
+
+[node name="ground51" parent="平台组" unique_id=158616722 instance=ExtResource("2_dknf8")]
+position = Vector2(265.24036, 113.19201)
+scale = Vector2(0.024334868, 4.501949)
+
 [node name="ground49" parent="平台组" unique_id=103511886 instance=ExtResource("2_dknf8")]
 position = Vector2(243.3123, 146.462)
 scale = Vector2(0.024334868, 0.34633416)
+
+[node name="ground52" parent="平台组" unique_id=1869138166 instance=ExtResource("2_dknf8")]
+position = Vector2(243.3123, 115.82961)
+scale = Vector2(0.024334868, 1.0841012)
 
 [node name="ground16" parent="平台组" unique_id=1962990692 instance=ExtResource("2_dknf8")]
 position = Vector2(89.613396, 123.58201)
@@ -372,69 +462,93 @@ follow_one = NodePath("../stone5")
 
 [node name="机关" type="Node" parent="." unique_id=1783499836]
 
-[node name="旋转门-按钮组01" type="Node2D" parent="机关" unique_id=1673085562]
+[node name="旋转门-按钮" type="Node" parent="机关" unique_id=1587193705]
 
-[node name="旋转门" parent="机关/旋转门-按钮组01" unique_id=179682687 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
+[node name="旋转门-按钮组01" type="Node2D" parent="机关/旋转门-按钮" unique_id=1673085562]
+
+[node name="旋转门" parent="机关/旋转门-按钮/旋转门-按钮组01" unique_id=179682687 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
 self_modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
 position = Vector2(92, 43)
 button = NodePath("../按钮")
 
-[node name="旋转门2" parent="机关/旋转门-按钮组01" unique_id=1526885867 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
+[node name="旋转门2" parent="机关/旋转门-按钮/旋转门-按钮组01" unique_id=1526885867 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
 position = Vector2(57.999996, 104.99999)
 rotation = 2.094395
 scale = Vector2(0.73162854, 0.62764984)
 button = NodePath("../按钮")
 
-[node name="按钮" parent="机关/旋转门-按钮组01" unique_id=1019359368 instance=ExtResource("6_1wdii")]
+[node name="按钮" parent="机关/旋转门-按钮/旋转门-按钮组01" unique_id=1019359368 instance=ExtResource("6_1wdii")]
 position = Vector2(72.785, 115.375)
 
-[node name="旋转门-按钮组02" type="Node2D" parent="机关" unique_id=1127767546]
+[node name="旋转门-按钮组02" type="Node2D" parent="机关/旋转门-按钮" unique_id=1127767546]
 
-[node name="旋转门" parent="机关/旋转门-按钮组02" unique_id=2094917414 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
+[node name="旋转门" parent="机关/旋转门-按钮/旋转门-按钮组02" unique_id=2094917414 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
 position = Vector2(94.789246, 116.15132)
 rotation = 1.5707964
 scale = Vector2(0.75, 0.542)
 angel = -180.0
 button = NodePath("../按钮")
 
-[node name="旋转门2" parent="机关/旋转门-按钮组02" unique_id=1810698005 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
+[node name="旋转门2" parent="机关/旋转门-按钮/旋转门-按钮组02" unique_id=1810698005 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
 position = Vector2(139.17694, 43.105927)
 button = NodePath("../按钮")
 
-[node name="按钮" parent="机关/旋转门-按钮组02" unique_id=1896414764 instance=ExtResource("6_1wdii")]
+[node name="按钮" parent="机关/旋转门-按钮/旋转门-按钮组02" unique_id=1896414764 instance=ExtResource("6_1wdii")]
 position = Vector2(91.511826, 138.96693)
 
-[node name="旋转门-按钮组03" type="Node2D" parent="机关" unique_id=529638944]
+[node name="旋转门-按钮组03" type="Node2D" parent="机关/旋转门-按钮" unique_id=529638944]
 
-[node name="旋转门" parent="机关/旋转门-按钮组03" unique_id=167483346 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
+[node name="旋转门" parent="机关/旋转门-按钮/旋转门-按钮组03" unique_id=167483346 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
 position = Vector2(180.06175, 43.105927)
 button = NodePath("../按钮")
 
-[node name="按钮" parent="机关/旋转门-按钮组03" unique_id=969300796 instance=ExtResource("6_1wdii")]
+[node name="按钮" parent="机关/旋转门-按钮/旋转门-按钮组03" unique_id=969300796 instance=ExtResource("6_1wdii")]
 position = Vector2(147.13513, 124.0144)
 
-[node name="旋转门-按钮组04" type="Node2D" parent="机关" unique_id=2009914256]
+[node name="旋转门-按钮组04" type="Node2D" parent="机关/旋转门-按钮" unique_id=2009914256]
 
-[node name="旋转门2" parent="机关/旋转门-按钮组04" unique_id=1206376877 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
+[node name="旋转门2" parent="机关/旋转门-按钮/旋转门-按钮组04" unique_id=1206376877 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
 position = Vector2(180.23918, 74.25958)
 rotation = -1.8325956
 button = NodePath("../按钮")
 
-[node name="旋转门3" parent="机关/旋转门-按钮组04" unique_id=1494416861 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
+[node name="旋转门3" parent="机关/旋转门-按钮/旋转门-按钮组04" unique_id=1494416861 node_paths=PackedStringArray("button") instance=ExtResource("5_2txsg")]
 position = Vector2(127.04989, 86.52299)
 rotation = 2.8797934
 scale = Vector2(1.1921383, 1.2802888)
 angel = 90.0
 button = NodePath("../按钮")
 
-[node name="按钮" parent="机关/旋转门-按钮组04" unique_id=1588558548 instance=ExtResource("6_1wdii")]
+[node name="按钮" parent="机关/旋转门-按钮/旋转门-按钮组04" unique_id=1588558548 instance=ExtResource("6_1wdii")]
 position = Vector2(154.7825, 78.73272)
+
+[node name="移动平台-引信" type="Node" parent="机关" unique_id=1885072655]
+
+[node name="移动平台-引信组01" type="Node2D" parent="机关/移动平台-引信" unique_id=1052145135]
+
+[node name="移动平台" parent="机关/移动平台-引信/移动平台-引信组01" unique_id=1267907715 node_paths=PackedStringArray("移动动画") instance=ExtResource("8_netke")]
+position = Vector2(254.26048, 140.98305)
+"移动动画" = NodePath("移动动画")
+
+[node name="移动动画" type="AnimationPlayer" parent="机关/移动平台-引信/移动平台-引信组01/移动平台" unique_id=979528574]
+libraries/ = SubResource("AnimationLibrary_qjoov")
+
+[node name="绳子终点" type="Node2D" parent="机关/移动平台-引信/移动平台-引信组01" unique_id=626763113]
+position = Vector2(239, 143)
+
+[node name="绳子" parent="机关/移动平台-引信/移动平台-引信组01" unique_id=875457264 node_paths=PackedStringArray("anchor", "end_body") instance=ExtResource("9_kp3co")]
+points = PackedVector2Array(258, 134)
+segment_count = 8
+anchor = NodePath("../移动平台")
+end_body = NodePath("../绳子终点")
+point_radius = 0.5
+burn_speed = 20
+
+[node name="移动平台-引信组02" type="Node2D" parent="机关/移动平台-引信" unique_id=2037679453]
+
+[node name="移动平台" parent="机关/移动平台-引信/移动平台-引信组02" unique_id=501916204 instance=ExtResource("8_netke")]
+position = Vector2(234.03336, 52.805992)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1289982537]
 position = Vector2(182.12247, 103.2259)
 zoom = Vector2(1.1, 1.1)
-
-[node name="Node2D" parent="." unique_id=501916204 instance=ExtResource("8_netke")]
-
-[node name="Node2D2" parent="." unique_id=1267907715 instance=ExtResource("8_netke")]
-position = Vector2(258.0978, 141.2947)

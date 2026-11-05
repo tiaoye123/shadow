@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ya50ogua5afk"]
+
+[ext_resource type="Script" uid="uid://cyk4px3dp6ere" path="res://script/绳子.gd" id="1_rtsqh"]
+
+[node name="绳子" type="Line2D" unique_id=875457264]
+width = 0.5
+script = ExtResource("1_rtsqh")

@@ -18,6 +18,7 @@ fill_to = Vector2(0.7692308, 0.2008547)
 script = ExtResource("1_clkd5")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=80043076]
+position = Vector2(0, 0.17037058)
 scale = Vector2(1, 0.5)
 polygon = PackedVector2Array(-1, 0, -1, -2, 1, -2, 1, 0)
 
